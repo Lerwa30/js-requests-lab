@@ -11,6 +11,8 @@
 
 // CODE HERE
 
+const sayHelloButton = document.querySelector('#say-hello-button')
+
 
 // PROBLEM 2
 /*
@@ -21,6 +23,12 @@
 
 // CODE HERE
 
+function changeBtnColor() {
+    sayHelloButton.style.backgroundColor = 'black'
+    sayHelloButton.style.color = 'white'
+}
+
+sayHelloButton.addEventListener('mouseover', changeBtnColor)
 
 // PROBLEM 3
 /*
@@ -33,6 +41,12 @@
 
 // CODE HERE
 
+function revertBtnColor() {
+    sayHelloButton.style.backgroundColor = '#EFEFEF'
+    sayHelloButton.style.color = 'black'
+}
+
+sayHelloButton.addEventListener('mouseout', revertBtnColor)
 
 // PROBLEM 4
 /*
@@ -54,6 +68,8 @@ const sayHello = () => {
 
 // CODE HERE
 
+sayHelloButton.addEventListener('click', sayHello)
+
 
 // PROBLEM 5 
 /*
@@ -67,7 +83,11 @@ const sayHello = () => {
 */ 
 
 const ohMy = () => {
-    // YOUR CODE HERE
+    axios 
+        .get('http://localhost:3000/animals')
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
+        // YOUR CODE HERE
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
