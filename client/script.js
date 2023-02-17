@@ -87,7 +87,13 @@ sayHelloButton.addEventListener('click', sayHello)
 const ohMy = () => {
     axios 
         .get('http://localhost:3000/animals')
-        .then(res => console.log(res.data))
+        .then(res => {
+            for(let i = 0; i < res.data.length; i++) {
+                let newPara = document.createElement('p');
+                newPara.textContent = res.data[i];
+                document.body.appendChild(newPara)
+            }
+        })
         .catch(err => console.log(err))
         // YOUR CODE HERE
 }
@@ -147,7 +153,7 @@ document.getElementById('repeat-button').addEventListener('click', repeatMyParam
 
 function attachQuery() {
     axios 
-    .get('http://localhost:3000/query-test?name=leroy')
+    .get('http://localhost:3000/query-test?name=leroy&?age=30')
     .then(res => console.log(res.data))
 }
 
